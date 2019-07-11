@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Suburb selection</h2>
+
+<p data-bind="text: Search, visible: SearchStatus" style="color:red"></p>
+
+<div class="container">
+    <div>
+        <div data-bind="visible: SearchRegions">
+            <label class="control-label col-sm-3">Region Name</label>
+            <select class="form-control col-sm-9" data-bind="options: regions,
+                                                             optionsText: 'RegionName',
+                                                             value: selectedRegion,
+                                                             optionsCaption: '--Select Region--'"></select>
+        </div>
+        <br />
+        <br />
+        <div data-bind="with: selectedRegion">
+            <div class="form-group">
+                <label class="control-label col-sm-3">District Name</label>
+
+                <select class="form-control col-sm-9" data-bind="options: DistrictList,
+                                                             optionsText: 'DistrictName',
+                                                             value: selectedDistrict,
+                                                             optionsCaption: '--Select District--'"></select>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div data-bind="with: selectedDistrict">
+            <div class="form-group">
+                <label class="control-label col-sm-3">Suburb Name</label>
+                <select class="form-control col-sm-8" data-bind="options: SuburbList,
+                        optionsText: 'SuburbName',
+                        value: selectedSuburb,
+                        optionsCaption: '--Select Suburb--'"></select>
+            </div>
+            <button class="form-group col-sm-offset-1 btn btn-default" data-bind="click: searchSuburb">Search</button>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/knockout-3.4.2.js"></script>
+<script src="~/Scripts/suburb.js"></script>

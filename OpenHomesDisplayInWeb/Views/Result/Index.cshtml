@@ -1,0 +1,83 @@
+﻿<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <h2>Homes</h2>
+
+    @*@foreach (var suburb in ViewBag.Suburb)
+    {
+        <h4>@suburb.SuburbName</h4>
+        if (suburb.HomeList.Count > 0)
+        {
+            int homeCount = 0;
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Location</th>
+                        <th>Room</th>
+                        <th>Property type</th>
+                        <th>Price</th>
+                        <th>Parking</th>
+                        <th>Open home time</th>
+                    </tr>
+                </thead>
+
+                @foreach (var home in suburb.HomeList)
+                {
+                    homeCount++;
+                    <tbody>
+                        <tr>
+                            <td>@homeCount</td>
+                            <td>@home.Location</td>
+                            <td>@home.Rooms</td>
+                            <td>@home.PropertyType</td>
+                            <td>@home.Price</td>
+                            <td>@home.Parking</td>
+                            <td>@home.OpenHomeTime</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No homes to display</p>
+        }
+    }*@
+
+
+
+    <table class="table table-striped navbar-static-top" id="wrap">
+            <thead>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Location</th>
+                    <th>Room</th>
+                    <th>Property type</th>
+                    <th>Price</th>
+                    <th>Parking</th>
+                    <th>Open home time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-bind="text: Search, visible: SearchStatus" style="color:red"></tr>
+            </tbody>
+            <tbody data-bind="foreach: home">
+                <tr>
+                    <td data-bind="text: $index() + 1"></td>
+                    <td data-bind="text: Location"></td>
+                    <td data-bind="text: Rooms"></td>
+                    <td data-bind="text: PropertyType"></td>
+                    <td data-bind="text: Price"></td>
+                    <td data-bind="text: Parking"></td>
+                    <td data-bind="text: OpenHomeTime"></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    <br />
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/knockout-3.4.2.js"></script>
+<script src="~/Scripts/homes.js"></script>
